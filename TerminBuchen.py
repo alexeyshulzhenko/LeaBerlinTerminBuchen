@@ -1,7 +1,8 @@
-from PyQt5.QtWidgets import QApplication, QWidget, QDesktopWidget, QVBoxLayout, \
+from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, \
     QHBoxLayout, QLineEdit, QPushButton, QLabel, QMessageBox
-from PyQt5.QtGui import QRegularExpressionValidator
-from PyQt5.QtCore import QRegularExpression
+from PyQt6 import QtGui
+from PyQt6.QtGui import QRegularExpressionValidator
+from PyQt6.QtCore import QRegularExpression
 import threading
 import sys
 from selenium import webdriver
@@ -111,7 +112,7 @@ class TerminBuchenView(QWidget):
 
     def center(self):
         qr = self.frameGeometry()
-        cp = QDesktopWidget().availableGeometry().center()
+        cp = QtGui.QGuiApplication.primaryScreen().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())  
         
@@ -158,5 +159,5 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     termin_buchen_controller = TerminBuchenController()
     termin_buchen_controller.view.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
     pass
